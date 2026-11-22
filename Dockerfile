@@ -13,7 +13,9 @@ COPY .mvn ./.mvn
 COPY mvnw mvnw.cmd pom.xml ./
 COPY src ./src
 COPY --from=frontend /src/dist/bench/browser ./frontend/dist/bench/browser
-RUN chmod +x mvnw && ./mvnw -B -DskipTests package
+# Use the image's Maven directly: the official image sets MAVEN_CONFIG,
+# which the wrapper script would misread as an extra lifecycle argument.
+RUN mvn -B -DskipTests package
 
 FROM eclipse-temurin:21-jre-alpine
 RUN addgroup -S bench && adduser -S -G bench bench
