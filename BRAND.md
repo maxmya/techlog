@@ -2,43 +2,49 @@
 
 ## Name
 
-**maxmya** is the name. **BENCH LOG** is the descriptor that appears next to it —
-a workbench, not a dashboard. The wordmark is always lowercase `maxmya` followed
-by a red `//`.
+`maxmya` is the name. `BENCH LOG` is the descriptor. The wordmark is lowercase
+`maxmya` beside a hand-drawn workbench mark and a small issue/volume line. It reads
+like a self-published journal, not a product dashboard.
 
-## Mark
+## The idea
 
-The mark is a workbench in four strokes: a top rail, two legs and a lower shelf,
-with one red rivet. It is used in the header, the footer and as the favicon
-(`frontend/public/mark.svg`). Keep it square, keep it hard-edged.
+A **workshop logbook** kept by hand. Ruled paper, typed labels, taped index cards,
+marginalia in pencil, ledger tables, double rules and folio numbers. Every page is
+a page in the same notebook. Nothing glows, nothing floats, nothing animates in
+except a loading rule.
 
 ## Palette
 
 | Token | Hex | Use |
 | --- | --- | --- |
-| paper | `#f1efe7` | page background, with a faint 28px grid |
-| ink | `#161614` | type, rules, filled buttons, footer |
-| oxide | `#d23b25` | accents, current version, kicker labels |
-| moss | `#274b3d` | secondary accents on project pages |
-| acid | `#d8f04a` | terminal output, hover details on dark |
-| muted | `#706e66` | metadata, secondary copy |
+| paper | `#f4f1e8` | page, ruled every 32px, faint noise |
+| ink | `#191714` | type, rules, filled buttons |
+| oxide | `#b5351f` | section numbers, labels, current version |
+| rule | `#c8c1b2` | dotted ledger lines, index cards |
+| muted | `#6f6a60` | metadata and secondary copy |
+| acid | `#d8f04a` | unused; reserved for future markup |
 
 ## Type
 
-- **Archivo** — display headlines, 900 weight, tight `-.055em` tracking, uppercase.
-- **IBM Plex Mono** — everything functional: navigation, labels, metadata, buttons.
-- **Newsreader italic** — decks, pull quotes, editorial lines.
+- **Newsreader** — headlines, project names, deck copy. Medium weight, tight
+  tracking, italics for the spoken lines.
+- **IBM Plex Mono** — labels, dates, navigation, table rows, small bodies.
+- **Caveat** — handwriting: notes in the margin, taped-card captions, page closers.
+
+## Furniture
+
+- Masthead with a small rotated mark, issue line and underline navigation.
+- `SECTION 0x / NAME` kickers on every page.
+- Index cards: off-white rectangle, dotted fields, tape strip, slight rotation.
+- Ledgers: double top rule, column labels, dotted rows, no zebra striping.
+- Footer colophon with a handwritten sign-off.
 
 ## Rules
 
-- Square corners. No rounded cards, no pill buttons.
-- No gradients, no glassmorphism, no glowing orbs, no sparkles.
-- Rules and grid lines do the decorative work.
-- Number sections (`01 /`, `02 /`) like a workshop index.
-- Copy is short, concrete and a little dry. No marketing voice.
-- Project accents are allowed, but the chrome stays paper/ink/oxide.
-
-## Motion
-
-Minimal: 150ms translate on interactive rows and buttons. Respect
-`prefers-reduced-motion`.
+- Square corners. No cards-with-shadows-as-a-system, no gradients, no glass, no
+  glow, no sparkles, no dashboard tiles, no fake terminal windows.
+- Numbering and rules do the decorative work. Margins are allowed to be handwritten.
+- Copy is short, concrete and dry. No marketing voice, no "ship faster".
+- Project accent colors are tolerated in project files only; global chrome stays
+  paper/ink/oxide.
+- Motion: 150ms hover, nothing more. Respect `prefers-reduced-motion`.

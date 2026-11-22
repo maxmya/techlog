@@ -1,18 +1,18 @@
 <section class="page wrap">
   <header class="head">
-    <span class="kicker">// WHO'S AT THE BENCH</span>
-    <h1 class="display page-title">ABOUT<span class="oxide">.</span></h1>
+    <div class="head-top"><span>WHO'S AT THE BENCH</span><span>KEPT BY HAND</span></div>
+    <span class="entry-no">SECTION 04 <i></i> ABOUT</span>
+    <h1 class="page-title">About<span class="oxide">.</span></h1>
+    <span class="hand head-note">hi, I'm m.</span>
   </header>
 
   <div class="about-grid">
     <div class="main">
-      <p class="lead serif">{{ site.content()?.profile?.bio }}</p>
+      <p class="lead">{{ site.content()?.profile?.bio }}</p>
       <p class="body">{{ site.content()?.profile?.name || 'maxmya' }} — {{ site.content()?.profile?.role }}. Based {{ site.content()?.profile?.location }}. Building things since {{ site.content()?.profile?.since }}.</p>
       <p class="body">The work here ranges from desktop utilities in Rust to service layers in Java and small experiments in Godot. If it's on this site, it's something I actually use or learned from.</p>
 
-      <div class="section-head about-head">
-        <span class="kicker">ELSEWHERE</span><span class="rule"></span>
-      </div>
+      <div class="section-head about-head"><span class="kicker">ELSEWHERE</span><span class="rule"></span></div>
       <div class="links">
         @for (link of site.content()?.profile?.links ?? []; track link.url) {
           <a [href]="link.url" target="_blank" rel="noopener">{{ link.label }} <span>↗</span></a>
@@ -20,31 +20,36 @@
       </div>
     </div>
 
-    <aside class="aside">
-      <div class="fact"><span class="kicker">HANDLE</span><strong>{{ site.content()?.profile?.handle }}</strong></div>
-      <div class="fact"><span class="kicker">PROJECTS</span><strong>{{ site.projects().length }}</strong></div>
-      <div class="fact"><span class="kicker">ENTRIES</span><strong>{{ site.updates().length }}</strong></div>
-      <div class="fact"><span class="kicker">STACK</span><strong>JAVA / ANGULAR</strong></div>
+    <aside class="slip">
+      <div class="slip-head">INDEX CARD / WHO</div>
+      <dl>
+        <div><dt>HANDLE</dt><dd>{{ site.content()?.profile?.handle }}</dd></div>
+        <div><dt>FILES</dt><dd>{{ site.projects().length }}</dd></div>
+        <div><dt>REPOS</dt><dd>{{ site.repos().length }}</dd></div>
+        <div><dt>ENTRIES</dt><dd>{{ site.updates().length }}</dd></div>
+        <div><dt>STACK</dt><dd>JAVA / ANGULAR</dd></div>
+      </dl>
+      <span class="hand slip-note">still tinkering</span>
     </aside>
   </div>
 
   <div class="how">
-    <div class="section-head"><span class="kicker">HOW THIS SITE IS PUT TOGETHER</span><span class="rule"></span></div>
+    <div class="section-head"><span class="kicker">HOW THIS LOG IS KEPT</span><span class="rule"></span></div>
     <div class="how-grid">
       <div>
         <span class="num">01</span>
-        <h3>Content</h3>
-        <p>One JSON file holds the profile, projects, versions and log entries. It ships as a seed inside the image and lives on a Docker volume at runtime, so edits survive redeploys.</p>
+        <h3>Paper</h3>
+        <p>One JSON file holds the profile, project files, versions and log entries. It ships with the image and lives on a volume, so edits survive a redeploy.</p>
       </div>
       <div>
         <span class="num">02</span>
-        <h3>Backend</h3>
-        <p>Spring Boot serves the public API and the built Angular bundle. A token-protected admin API can replace content or add a release without a rebuild.</p>
+        <h3>Press</h3>
+        <p>Spring Boot serves the API and the pages. A token-protected admin API can add a release without rebuilding anything.</p>
       </div>
       <div>
         <span class="num">03</span>
-        <h3>Frontend</h3>
-        <p>Angular standalone components, lazy-loaded routes and signal state. Project pages are generated from the same content, including their own landing page and wiki links.</p>
+        <h3>Shelf</h3>
+        <p>The full public GitHub repository list is fetched straight from GitHub and kept for half an hour. Curated files link back to it.</p>
       </div>
     </div>
     <a class="btn" routerLink="/projects">SEE THE PROJECTS <span>↗</span></a>

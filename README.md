@@ -52,6 +52,12 @@ At startup the seed is copied to `BENCH_DATA_FILE` (default
 API live on the mounted volume and survive redeploys. To reset, delete the file
 in the volume and restart the container.
 
+The projects page also lists every **public GitHub repository** for the configured
+user, fetched live from `/users/{user}/repos` and cached for 30 minutes. Repos with
+a matching project file are marked `FILE`. Private repos are never listed. Optional
+environment variables: `GITHUB_USER` (default `maxmya`), `GITHUB_TOKEN` (raises the
+API rate limit), `GITHUB_CACHE_MINUTES` (default `30`).
+
 ### Public API
 
 | Method | Path |
@@ -61,6 +67,7 @@ in the volume and restart the container.
 | GET | `/api/projects` |
 | GET | `/api/projects/{slug}` |
 | GET | `/api/updates` |
+| GET | `/api/github/repos` |
 
 ### Admin API
 

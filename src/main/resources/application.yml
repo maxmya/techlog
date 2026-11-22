@@ -15,6 +15,10 @@ bench:
   data-file: ${BENCH_DATA_FILE:/app/data/site.json}
   admin-token: ${ADMIN_TOKEN:}
   site-url: ${SITE_URL:https://maxmya.com}
+  github:
+    user: ${GITHUB_USER:maxmya}
+    token: ${GITHUB_TOKEN:}
+    cache-minutes: ${GITHUB_CACHE_MINUTES:30}
 
 logging:
   level:

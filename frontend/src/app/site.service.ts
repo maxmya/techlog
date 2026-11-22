@@ -1,12 +1,13 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Project, SiteContent, Update } from './models';
+import { GitHubRepo, Project, SiteContent, Update } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class SiteService {
   private readonly http = inject(HttpClient);
 
   readonly content = signal<SiteContent | null>(null);
+  readonly repos = signal<GitHubRepo[]>([]);
   readonly loading = signal(true);
   readonly error = signal<string | null>(null);
 
@@ -27,6 +28,15 @@ export class SiteService {
         this.loading.set(false);
       }
     });
+
+    this.http.get<GitHubRepo[]>('/api/github/repos').subscribe({
+      next: (data) => this.repos.set(data),
+      error: () => this.repos.set([])
+    });
+  }
+
+  hasFile(repo: GitHubRepo): boolean {
+    return this.projects().some((p) => p.slug.toLowerCase() === repo.name.toLowerCase());
   }
 
   project(slug: string): Project | undefined {
@@ -41,7 +51,7 @@ export class SiteService {
     return project.versions?.[0]?.tag ?? '—';
   }
 
-  date(value: string): string {
+  date(value?: string | null): string {
     if (!value) return '';
     const parts = value.split('-');
     if (parts.length !== 3) return value;

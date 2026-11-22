@@ -1,37 +1,72 @@
 <section class="page wrap">
   <header class="head">
-    <span class="kicker">// CATALOGUE</span>
-    <h1 class="display page-title">PROJECTS<span class="oxide">.</span></h1>
-    <p class="page-intro">Things I built because I wanted to use them. Each one has its own page: what it is, which version is current, and where the deeper docs live.</p>
+    <div class="head-top"><span>SHELF LIST</span><span>COMPILED NOV 2026</span></div>
+    <span class="entry-no">SECTION 02 <i></i> THE WORK</span>
+    <h1 class="page-title">Projects<span class="oxide">.</span></h1>
+    <p class="page-intro">Things built because I wanted to use them. The ones with a number below have their own file: current version, notes and wiki links.</p>
+    <span class="hand head-note">{{ site.projects().length }} files, {{ site.repos().length }} repos</span>
   </header>
 
   <div class="filters">
+    <span class="kicker">FILTER /</span>
     @for (lang of languages(); track lang) {
       <button type="button" class="chip" [class.on]="filter() === lang" (click)="filter.set(lang)">
-        {{ lang === 'all' ? 'ALL / ' + site.projects().length : lang }}
+        {{ lang === 'all' ? 'ALL (' + allCount() + ')' : lang }}
       </button>
     }
   </div>
 
-  <div class="grid">
+  <div class="catalogue">
     @for (p of visible(); track p.slug; let i = $index) {
-      <a class="card" [routerLink]="['/p', p.slug]" [style.--accent]="p.accent || '#d23b25'">
-        <div class="card-top">
-          <span class="num">{{ i + 1 < 10 ? '0' : '' }}{{ i + 1 }}</span>
-          <span class="badge">{{ p.status || 'active' }}</span>
+      <a class="item" [routerLink]="['/p', p.slug]">
+        <span class="num">{{ i + 1 < 10 ? '0' : '' }}{{ i + 1 }}</span>
+        <div class="item-main">
+          <h2 class="item-title">{{ p.name }}</h2>
+          <p class="item-tag">{{ p.tagline }}</p>
         </div>
-        <h2 class="display card-title">{{ p.name }}</h2>
-        <p class="card-tag serif">{{ p.tagline }}</p>
-        <div class="card-meta">
-          <span>{{ p.language || 'misc' }}</span>
-          <span>{{ site.latest(p) }}</span>
-          <span class="go">↗</span>
+        <div class="item-meta">
+          <span class="state">{{ p.status || 'active' }}</span>
+          <span class="lang">{{ p.language || 'misc' }}</span>
+          <span class="latest">{{ site.latest(p) }}</span>
         </div>
+        <span class="arrow">↗</span>
       </a>
+    } @empty {
+      <p class="empty">No project files match this filter.</p>
     }
   </div>
 
-  @if (visible().length === 0) {
-    <p class="empty serif">Nothing on this shelf yet.</p>
+  @if (site.repos().length) {
+    <section class="repos">
+      <div class="section-head">
+        <span class="kicker">FULL SHELF / GITHUB</span><span class="rule"></span>
+        <span class="marg">{{ visibleRepos().length }} REPOSITORIES</span>
+      </div>
+      <p class="repos-intro">Every public repository on GitHub, newest first. Marked ones have a project file above.</p>
+
+      <div class="ledger">
+        <div class="ledger-head">
+          <span>NAME</span><span>DESCRIPTION</span><span>LANGUAGE</span><span>PUSHED</span><span></span>
+        </div>
+        @for (repo of visibleRepos(); track repo.name) {
+          <a class="ledger-row" [href]="repo.html_url" target="_blank" rel="noopener">
+            <span class="repo-name">
+              {{ repo.name }}
+              @if (site.hasFile(repo)) { <i class="file-mark" title="Has a project file">FILE</i> }
+              @if (repo.archived) { <i class="dim">ARCHIVED</i> }
+              @if (repo.fork) { <i class="dim">FORK</i> }
+            </span>
+            <span class="repo-desc">{{ repo.description || '—' }}</span>
+            <span class="repo-lang">{{ repo.language || 'misc' }}</span>
+            <time>{{ site.date(repo.pushed_at?.slice(0, 10)) }}</time>
+            <span class="arrow">↗</span>
+          </a>
+        } @empty {
+          <p class="empty">No repositories match this filter.</p>
+        }
+      </div>
+    </section>
   }
+
+  <p class="foot-note hand">more as they're finished — m.</p>
 </section>

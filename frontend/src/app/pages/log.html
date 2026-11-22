@@ -1,11 +1,14 @@
 <section class="page wrap">
   <header class="head">
-    <span class="kicker">// FIELD NOTES</span>
-    <h1 class="display page-title">THE LOG<span class="oxide">.</span></h1>
-    <p class="page-intro">Releases, changes and the occasional note. Newest first, no newsletter.</p>
+    <div class="head-top"><span>FIELD NOTES</span><span>NEWEST FIRST</span></div>
+    <span class="entry-no">SECTION 03 <i></i> THE LOG</span>
+    <h1 class="page-title">The Log<span class="oxide">.</span></h1>
+    <p class="page-intro">Releases, changes and the occasional note. No newsletter, no feed, just the page.</p>
+    <span class="hand head-note">written down so I don't forget</span>
   </header>
 
   <div class="filters">
+    <span class="kicker">FILTER /</span>
     @for (kind of kinds(); track kind) {
       <button type="button" class="chip" [class.on]="filter() === kind" (click)="filter.set(kind)">
         {{ kind }}
@@ -13,23 +16,29 @@
     }
   </div>
 
-  <div class="timeline">
+  <div class="ledger">
+    <div class="ledger-head"><span>DATE</span><span>KIND</span><span>ENTRY</span></div>
     @for (entry of visible(); track entry.date + entry.title) {
       <article class="entry">
-        <div class="date"><span class="node"></span><time>{{ site.date(entry.date) }}</time></div>
+        <div class="date">
+          <span class="node"></span>
+          <time>{{ site.date(entry.date) }}</time>
+        </div>
+        <div class="kind-cell">
+          <span class="kind" [class.oxide]="entry.kind === 'release'">{{ entry.kind }}</span>
+          @if (entry.projectSlug) {
+            <a [routerLink]="['/p', entry.projectSlug]">{{ entry.projectSlug }} ↗</a>
+          }
+        </div>
         <div class="entry-body">
-          <div class="entry-head">
-            <span class="badge" [class.oxide]="entry.kind === 'release'" [class.ink]="entry.kind === 'site'">{{ entry.kind }}</span>
-            @if (entry.projectSlug) {
-              <a class="project-link" [routerLink]="['/p', entry.projectSlug]">{{ entry.projectSlug }} ↗</a>
-            }
-          </div>
-          <h2 class="display entry-title">{{ entry.title }}</h2>
+          <h2 class="entry-title">{{ entry.title }}</h2>
           <p>{{ entry.body }}</p>
         </div>
       </article>
     } @empty {
-      <p class="muted serif">No entries in this section yet.</p>
+      <p class="empty">No entries in this section yet.</p>
     }
   </div>
+
+  <p class="foot-note hand">ends here — m.</p>
 </section>

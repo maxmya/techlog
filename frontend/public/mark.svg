@@ -1,5 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="maxmya bench mark">
-  <rect width="48" height="48" fill="#161614"/>
-  <path d="M8 14h32M13 14v22M35 14v22M18 26h12" fill="none" stroke="#f1efe7" stroke-width="3"/>
-  <circle cx="35" cy="26" r="3.4" fill="#d23b25"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="bench mark">
+  <rect width="48" height="48" fill="#191714"/>
+  <g fill="none" stroke="#f4f1e8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7.5 13.5c9-0.6 23.5 0.4 33-0.3"/>
+    <path d="M12.8 14.2c-0.5 7.4 0.2 15.1-0.6 22.3"/>
+    <path d="M35.1 13.9c0.6 7.2-0.3 14.8 0.4 22.1"/>
+    <path d="M17.6 26.8c4.6-0.5 8.6 0.3 12.9-0.2"/>
+    <path d="M9 37.2c10-0.7 20.4 0.5 30-0.4" stroke-width="1.5" opacity=".55"/>
+  </g>
+  <circle cx="35.2" cy="26.6" r="3.1" fill="#b5351f"/>
 </svg>

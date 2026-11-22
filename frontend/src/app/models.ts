@@ -67,3 +67,15 @@ export interface SiteContent {
   projects: Project[];
   updates: Update[];
 }
+
+export interface GitHubRepo {
+  name: string;
+  description?: string;
+  html_url: string;
+  language?: string;
+  pushed_at: string;
+  stargazers_count: number;
+  fork: boolean;
+  archived: boolean;
+  topics: string[];
+}
