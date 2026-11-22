@@ -1,0 +1,55 @@
+<div class="shell">
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <a class="brand" routerLink="/" aria-label="maxmya, home">
+        <img src="mark.svg" alt="" class="brand-mark">
+        <span class="brand-word">maxmya<span class="slash">//</span></span>
+        <span class="brand-stamp">BENCH<br>LOG</span>
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">01 HOME</a>
+        <a routerLink="/projects" routerLinkActive="active">02 PROJECTS</a>
+        <a routerLink="/log" routerLinkActive="active">03 LOG</a>
+        <a routerLink="/about" routerLinkActive="active">04 ABOUT</a>
+      </nav>
+
+      <div class="masthead-meta">
+        <span class="pulse"></span>
+        <span>BUILDING IN PUBLIC</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    @if (site.loading()) {
+      <div class="wrap boot">
+        <span class="kicker">// READING THE BENCH</span>
+        <div class="boot-bar"><span></span></div>
+      </div>
+    } @else if (site.error()) {
+      <div class="wrap boot">
+        <span class="kicker oxide">// SIGNAL LOST</span>
+        <p>{{ site.error() }}</p>
+        <button class="btn" type="button" (click)="site.load()">RETRY <span>↗</span></button>
+      </div>
+    } @else {
+      <router-outlet />
+    }
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-mark">
+        <img src="mark.svg" alt="" class="brand-mark">
+        <span class="kicker">MAXMYA / BENCH LOG</span>
+      </div>
+      <p class="footer-note serif">Built, broken, written down. Repeat.</p>
+      <div class="footer-links">
+        <a href="https://github.com/maxmya" target="_blank" rel="noopener">GITHUB ↗</a>
+        <a href="https://github.com/maxmya/techlog" target="_blank" rel="noopener">THIS SITE ↗</a>
+        <span>© {{ year }}</span>
+      </div>
+    </div>
+  </footer>
+</div>

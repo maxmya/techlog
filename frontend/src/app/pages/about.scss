@@ -1,0 +1,27 @@
+.head { margin-bottom: 50px; }
+.head .kicker { display: block; margin-bottom: 14px; }
+
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: clamp(30px, 7vw, 90px); }
+.lead { font-size: clamp(1.3rem, 2.6vw, 1.9rem); line-height: 1.45; color: #33312d; }
+.body { max-width: 640px; margin-top: 22px; font-size: .88rem; line-height: 1.85; color: var(--muted); }
+.about-head { margin-top: 56px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.links a { display: inline-flex; gap: 28px; border: 1px solid var(--ink); padding: 11px 14px; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; }
+.links a:hover { background: var(--ink); color: var(--paper); }
+.links a span { color: var(--oxide); }
+
+.aside { border-top: 3px solid var(--ink); }
+.fact { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.fact strong { display: block; margin-top: 5px; font-family: var(--display); font-size: 1.15rem; letter-spacing: -.02em; }
+
+.how { margin-top: 100px; }
+.how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; margin: 10px 0 40px; }
+.how-grid > div { border-top: 1px solid var(--ink); padding-top: 16px; }
+.num { font-size: .65rem; font-weight: 600; color: var(--oxide); letter-spacing: .18em; }
+.how-grid h3 { font-family: var(--display); font-weight: 800; font-size: 1.3rem; letter-spacing: -.02em; margin: 12px 0; text-transform: uppercase; }
+.how-grid p { font-size: .83rem; line-height: 1.8; color: var(--muted); }
+
+@media (max-width: 800px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .aside { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; }
+}

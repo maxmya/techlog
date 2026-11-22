@@ -1,0 +1,37 @@
+<section class="page wrap">
+  <header class="head">
+    <span class="kicker">// CATALOGUE</span>
+    <h1 class="display page-title">PROJECTS<span class="oxide">.</span></h1>
+    <p class="page-intro">Things I built because I wanted to use them. Each one has its own page: what it is, which version is current, and where the deeper docs live.</p>
+  </header>
+
+  <div class="filters">
+    @for (lang of languages(); track lang) {
+      <button type="button" class="chip" [class.on]="filter() === lang" (click)="filter.set(lang)">
+        {{ lang === 'all' ? 'ALL / ' + site.projects().length : lang }}
+      </button>
+    }
+  </div>
+
+  <div class="grid">
+    @for (p of visible(); track p.slug; let i = $index) {
+      <a class="card" [routerLink]="['/p', p.slug]" [style.--accent]="p.accent || '#d23b25'">
+        <div class="card-top">
+          <span class="num">{{ i + 1 < 10 ? '0' : '' }}{{ i + 1 }}</span>
+          <span class="badge">{{ p.status || 'active' }}</span>
+        </div>
+        <h2 class="display card-title">{{ p.name }}</h2>
+        <p class="card-tag serif">{{ p.tagline }}</p>
+        <div class="card-meta">
+          <span>{{ p.language || 'misc' }}</span>
+          <span>{{ site.latest(p) }}</span>
+          <span class="go">↗</span>
+        </div>
+      </a>
+    }
+  </div>
+
+  @if (visible().length === 0) {
+    <p class="empty serif">Nothing on this shelf yet.</p>
+  }
+</section>

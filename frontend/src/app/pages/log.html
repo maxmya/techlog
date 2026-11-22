@@ -1,0 +1,35 @@
+<section class="page wrap">
+  <header class="head">
+    <span class="kicker">// FIELD NOTES</span>
+    <h1 class="display page-title">THE LOG<span class="oxide">.</span></h1>
+    <p class="page-intro">Releases, changes and the occasional note. Newest first, no newsletter.</p>
+  </header>
+
+  <div class="filters">
+    @for (kind of kinds(); track kind) {
+      <button type="button" class="chip" [class.on]="filter() === kind" (click)="filter.set(kind)">
+        {{ kind }}
+      </button>
+    }
+  </div>
+
+  <div class="timeline">
+    @for (entry of visible(); track entry.date + entry.title) {
+      <article class="entry">
+        <div class="date"><span class="node"></span><time>{{ site.date(entry.date) }}</time></div>
+        <div class="entry-body">
+          <div class="entry-head">
+            <span class="badge" [class.oxide]="entry.kind === 'release'" [class.ink]="entry.kind === 'site'">{{ entry.kind }}</span>
+            @if (entry.projectSlug) {
+              <a class="project-link" [routerLink]="['/p', entry.projectSlug]">{{ entry.projectSlug }} ↗</a>
+            }
+          </div>
+          <h2 class="display entry-title">{{ entry.title }}</h2>
+          <p>{{ entry.body }}</p>
+        </div>
+      </article>
+    } @empty {
+      <p class="muted serif">No entries in this section yet.</p>
+    }
+  </div>
+</section>

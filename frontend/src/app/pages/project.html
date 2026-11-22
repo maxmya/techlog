@@ -1,0 +1,132 @@
+@if (project(); as p) {
+  <article class="wrap project" [style.--accent]="p.accent || '#d23b25'">
+    <a class="back" routerLink="/projects">← ALL PROJECTS</a>
+
+    <header class="hero">
+      <span class="kicker">{{ p.landing?.eyebrow || 'PROJECT / BENCH' }}</span>
+      <h1 class="display title">{{ p.landing?.headline || p.name }}</h1>
+      <p class="deck serif">{{ p.landing?.deck || p.tagline }}</p>
+
+      <div class="actions">
+        @if (p.landing?.ctaUrl) {
+          <a class="btn solid" [href]="p.landing?.ctaUrl" target="_blank" rel="noopener">{{ p.landing?.ctaLabel || 'OPEN' }} <span>↗</span></a>
+        }
+        @if (p.repoUrl) { <a class="btn" [href]="p.repoUrl" target="_blank" rel="noopener">SOURCE <span>↗</span></a> }
+        @if (p.wikiUrl) { <a class="btn" [href]="p.wikiUrl" target="_blank" rel="noopener">WIKI <span>↗</span></a> }
+        @if (p.demoUrl) { <a class="btn" [href]="p.demoUrl" target="_blank" rel="noopener">DEMO <span>↗</span></a> }
+      </div>
+    </header>
+
+    <div class="facts">
+      <div><span class="kicker">STATUS</span><strong>{{ p.status || 'active' }}</strong></div>
+      <div><span class="kicker">LANGUAGE</span><strong>{{ p.language || 'misc' }}</strong></div>
+      <div><span class="kicker">LATEST</span><strong>{{ site.latest(p) }}</strong></div>
+      <div><span class="kicker">UPDATES</span><strong>{{ (p.versions?.length || 0) + entries().length }}</strong></div>
+    </div>
+
+    <div class="project-grid">
+      <div class="content">
+        @for (block of p.landing?.blocks ?? []; track $index) {
+          <section class="block">
+            @if (block.title) {
+              <div class="block-head"><span class="rule"></span><h2 class="kicker">{{ block.title }}</h2></div>
+            }
+            @switch (block.type) {
+              @case ('text') {
+                <p class="body">{{ block.body }}</p>
+              }
+              @case ('features') {
+                <ul class="features">
+                  @for (item of block.items ?? []; track item) { <li><span class="tick">✳</span>{{ item }}</li> }
+                </ul>
+              }
+              @case ('quote') {
+                <blockquote class="serif">{{ block.body }}</blockquote>
+              }
+              @case ('install') {
+                <pre class="code"><span class="prompt">$</span> {{ block.body }}</pre>
+              }
+              @case ('links') {
+                <div class="links">
+                  @for (link of block.links ?? []; track link.url) {
+                    <a [href]="link.url" target="_blank" rel="noopener">{{ link.label }} <span>↗</span></a>
+                  }
+                </div>
+              }
+            }
+          </section>
+        }
+
+        @if (p.description) {
+          <section class="block">
+            <div class="block-head"><span class="rule"></span><h2 class="kicker">ABOUT THIS BUILD</h2></div>
+            <p class="body">{{ p.description }}</p>
+          </section>
+        }
+
+        <section class="block versions">
+          <div class="block-head"><span class="rule"></span><h2 class="kicker">VERSION HISTORY / {{ p.versions?.length || 0 }}</h2></div>
+          @if ((p.versions?.length || 0) > 0) {
+            <div class="timeline">
+              @for (v of p.versions ?? []; track v.tag) {
+                <div class="version">
+                  <span class="node"></span>
+                  <div class="v-head">
+                    <strong>{{ v.tag }}</strong>
+                    @if (v.current) { <span class="badge oxide">CURRENT</span> }
+                    <time>{{ site.date(v.date) }}</time>
+                  </div>
+                  @if (v.title) { <h3>{{ v.title }}</h3> }
+                  @if (v.notes) { <p>{{ v.notes }}</p> }
+                  <div class="v-links">
+                    @if (v.changelogUrl) { <a [href]="v.changelogUrl" target="_blank" rel="noopener">CHANGELOG ↗</a> }
+                    @if (v.downloadUrl) { <a [href]="v.downloadUrl" target="_blank" rel="noopener">GET BUILD ↗</a> }
+                  </div>
+                </div>
+              }
+            </div>
+          } @else {
+            <p class="muted body">No tagged releases yet. Follow the repository for commits.</p>
+          }
+        </section>
+
+        @if (entries().length > 0) {
+          <section class="block">
+            <div class="block-head"><span class="rule"></span><h2 class="kicker">LOG ENTRIES</h2></div>
+            @for (entry of entries(); track entry.date + entry.title) {
+              <div class="logline">
+                <time>{{ site.date(entry.date) }}</time>
+                <div><strong>{{ entry.title }}</strong><p>{{ entry.body }}</p></div>
+              </div>
+            }
+          </section>
+        }
+      </div>
+
+      <aside class="aside">
+        <div class="aside-box">
+          <span class="kicker">QUICK LINKS</span>
+          @if (p.repoUrl) { <a [href]="p.repoUrl" target="_blank" rel="noopener">REPOSITORY ↗</a> }
+          @if (p.wikiUrl) { <a [href]="p.wikiUrl" target="_blank" rel="noopener">WIKI / DOCS ↗</a> }
+          @if (p.repoUrl) { <a [href]="p.repoUrl + '/issues'" target="_blank" rel="noopener">ISSUES ↗</a> }
+        </div>
+        @if (p.tags?.length) {
+          <div class="aside-box">
+            <span class="kicker">TAGGED</span>
+            <div class="tags">@for (tag of p.tags; track tag) { <span>{{ tag }}</span> }</div>
+          </div>
+        }
+        <div class="aside-box stamp">
+          <span class="kicker">MAINTENANCE</span>
+          <p class="serif">Built on the bench. Updated when there's something worth saying.</p>
+        </div>
+      </aside>
+    </div>
+  </article>
+} @else {
+  <section class="wrap page">
+    <span class="kicker oxide">// 404</span>
+    <h1 class="display page-title">NO SUCH PROJECT.</h1>
+    <a class="btn" routerLink="/projects">BACK TO INDEX <span>↗</span></a>
+  </section>
+}

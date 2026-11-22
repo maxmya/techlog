@@ -1,0 +1,365 @@
+{
+  "profile": {
+    "handle": "maxmya",
+    "name": "maxmya",
+    "role": "builder / maintainer",
+    "location": "online, mostly",
+    "since": "2018",
+    "bio": "I make small, sharp tools for the desktop and the terminal. This is the bench: what I'm building, what shipped, and the notes I didn't want to lose.",
+    "links": [
+      { "label": "github", "url": "https://github.com/maxmya" },
+      { "label": "source", "url": "https://github.com/maxmya/techlog" },
+      { "label": "email", "url": "mailto:mahmoud.3aaref@gmail.com" }
+    ]
+  },
+  "projects": [
+    {
+      "slug": "appshelf",
+      "name": "AppShelf",
+      "tagline": "A shelf for every app on your Linux desktop.",
+      "description": "A keyboard-first application launcher and updater for Omarchy and Quickshell. AppShelf inventories what's installed, keeps it current, and updates itself from the same running AppImage it uses for everything else.",
+      "status": "active",
+      "language": "Rust",
+      "repoUrl": "https://github.com/maxmya/appshelf",
+      "wikiUrl": "https://github.com/maxmya/appshelf/wiki",
+      "tags": ["rust", "linux", "quickshell", "desktop"],
+      "accent": "#d8402b",
+      "landing": {
+        "eyebrow": "PROJECT 01 / DESKTOP TOOLS",
+        "headline": "EVERY APP.\nONE SHELF.",
+        "deck": "One place to see what's installed, what's stale, and what to launch next. No daemon farm, no cloud account, no telemetry.",
+        "ctaLabel": "DOWNLOAD v0.7.0",
+        "ctaUrl": "https://github.com/maxmya/appshelf/releases/tag/v0.7.0",
+        "blocks": [
+          {
+            "type": "install",
+            "title": "INSTALL",
+            "body": "chmod +x AppShelf-0.7.0-x86_64.AppImage\n./AppShelf-0.7.0-x86_64.AppImage",
+            "items": [],
+            "links": []
+          },
+          {
+            "type": "features",
+            "title": "WHAT IT DOES",
+            "body": "",
+            "items": [
+              "Indexes installed applications and their current versions",
+              "One keystroke to update an app, one to update AppShelf itself",
+              "AppImage first, with a PKGBUILD in the source tree for Arch users",
+              "Lives alongside Quickshell instead of replacing your desktop"
+            ],
+            "links": []
+          },
+          {
+            "type": "links",
+            "title": "GO DEEPER",
+            "body": "",
+            "items": [],
+            "links": [
+              { "label": "read the wiki", "url": "https://github.com/maxmya/appshelf/wiki" },
+              { "label": "all releases", "url": "https://github.com/maxmya/appshelf/releases" },
+              { "label": "open issues", "url": "https://github.com/maxmya/appshelf/issues" }
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "tag": "v0.7.0",
+          "date": "2026-09-07",
+          "title": "Self-update lands",
+          "notes": "--self-check-update and --self-update now work on the running AppImage, the same way AppShelf updates every application it manages.",
+          "changelogUrl": "https://github.com/maxmya/appshelf/compare/v0.6.0...v0.7.0",
+          "downloadUrl": "https://github.com/maxmya/appshelf/releases/tag/v0.7.0",
+          "current": true
+        },
+        {
+          "tag": "v0.6.0",
+          "date": "2026-09-07",
+          "title": "Same-day follow-up",
+          "notes": "Tightened the self-update path and fixed AppImage detection edge cases.",
+          "changelogUrl": "https://github.com/maxmya/appshelf/compare/v0.5.0...v0.6.0",
+          "downloadUrl": "https://github.com/maxmya/appshelf/releases/tag/v0.6.0",
+          "current": false
+        },
+        {
+          "tag": "v0.5.0",
+          "date": "2026-09-06",
+          "title": "Install flow reworked",
+          "notes": "Simplified install and integration flags, with clearer Omarchy requirements.",
+          "changelogUrl": "https://github.com/maxmya/appshelf/compare/v0.4.0...v0.5.0",
+          "downloadUrl": "https://github.com/maxmya/appshelf/releases/tag/v0.5.0",
+          "current": false
+        }
+      ],
+      "updates": [
+        {
+          "date": "2026-09-07",
+          "title": "AppShelf can now update itself",
+          "body": "The updater that powers every managed app now works on AppShelf itself. Same flags, same flow, no separate bootstrap script.",
+          "kind": "release",
+          "projectSlug": "appshelf"
+        }
+      ]
+    },
+    {
+      "slug": "tokmon",
+      "name": "tokmon",
+      "tagline": "A small meter for a big number.",
+      "description": "A terminal-native token monitor. It keeps an eye on what your workflows are spending and prints the answer without a dashboard, a browser tab, or an account.",
+      "status": "active",
+      "language": "JavaScript",
+      "repoUrl": "https://github.com/maxmya/tokmon",
+      "wikiUrl": "https://github.com/maxmya/tokmon/wiki",
+      "tags": ["javascript", "cli", "observability"],
+      "accent": "#c6f24e",
+      "landing": {
+        "eyebrow": "PROJECT 02 / CLI TOOLS",
+        "headline": "KNOW WHAT\nIT COSTS.",
+        "deck": "Token accounting for people who live in a terminal. Plain text out, easy to pipe, easy to script.",
+        "ctaLabel": "VIEW SOURCE",
+        "ctaUrl": "https://github.com/maxmya/tokmon",
+        "blocks": [
+          {
+            "type": "features",
+            "title": "DESIGN NOTES",
+            "body": "",
+            "items": [
+              "Readable output that plays nicely with grep and friends",
+              "No network calls, no telemetry, no hidden state",
+              "Fits in a status bar or a shell prompt",
+              "MIT licensed and small enough to audit in one sitting"
+            ],
+            "links": []
+          },
+          {
+            "type": "links",
+            "title": "GO DEEPER",
+            "body": "",
+            "items": [],
+            "links": [
+              { "label": "read the wiki", "url": "https://github.com/maxmya/tokmon/wiki" },
+              { "label": "browse commits", "url": "https://github.com/maxmya/tokmon/commits/main" }
+            ]
+          }
+        ]
+      },
+      "versions": [],
+      "updates": [
+        {
+          "date": "2026-08-11",
+          "title": "tokmon moved to a cleaner output format",
+          "body": "Dropped the decorative framing. What's left is a line of text you can actually pipe into something else.",
+          "kind": "change",
+          "projectSlug": "tokmon"
+        }
+      ]
+    },
+    {
+      "slug": "droneia",
+      "name": "Droneia",
+      "tagline": "Backend services for things that fly.",
+      "description": "The Java service layer behind the Droneia project: ingestion, state and the boring reliability work that keeps a fleet of experiments from stepping on each other.",
+      "status": "active",
+      "language": "Java",
+      "repoUrl": "https://github.com/maxmya/droneia",
+      "wikiUrl": "https://github.com/maxmya/droneia/wiki",
+      "tags": ["java", "backend", "robotics"],
+      "accent": "#1f3b32",
+      "landing": {
+        "eyebrow": "PROJECT 03 / BACKEND",
+        "headline": "STEADY HANDS\nON THE WIRES.",
+        "deck": "A service layer built for telemetry that arrives out of order and clients that reconnect at the worst possible moment.",
+        "ctaLabel": "OPEN REPOSITORY",
+        "ctaUrl": "https://github.com/maxmya/droneia",
+        "blocks": [
+          {
+            "type": "features",
+            "title": "SCOPE",
+            "body": "",
+            "items": [
+              "Telemetry ingestion and state tracking",
+              "Clear boundaries between transport, domain and storage",
+              "Shared contracts for the Kotlin and TypeScript front ends"
+            ],
+            "links": []
+          },
+          {
+            "type": "links",
+            "title": "RELATED",
+            "body": "",
+            "items": [],
+            "links": [
+              { "label": "droneia wiki", "url": "https://github.com/maxmya/droneia/wiki" },
+              { "label": "kotlin client", "url": "https://github.com/maxmya/droneiak" },
+              { "label": "web front end", "url": "https://github.com/maxmya/droneia-frontend" }
+            ]
+          }
+        ]
+      },
+      "versions": [],
+      "updates": []
+    },
+    {
+      "slug": "droneia-frontend",
+      "name": "Droneia Frontend",
+      "tagline": "The glass side of Droneia.",
+      "description": "Web front end for Droneia. Turns the service layer's state into something a human can read at a glance.",
+      "status": "active",
+      "language": "TypeScript",
+      "repoUrl": "https://github.com/maxmya/droneia-frontend",
+      "wikiUrl": "https://github.com/maxmya/droneia-frontend/wiki",
+      "tags": ["typescript", "frontend", "robotics"],
+      "accent": "#4a6fa5",
+      "landing": {
+        "eyebrow": "PROJECT 04 / FRONTEND",
+        "headline": "A VIEW OF\nTHE FLIGHT.",
+        "deck": "Built against the Droneia service contracts, with an eye for dense information that stays legible.",
+        "ctaLabel": "VIEW SOURCE",
+        "ctaUrl": "https://github.com/maxmya/droneia-frontend",
+        "blocks": [
+          {
+            "type": "links",
+            "title": "GO DEEPER",
+            "body": "",
+            "items": [],
+            "links": [
+              { "label": "read the wiki", "url": "https://github.com/maxmya/droneia-frontend/wiki" },
+              { "label": "backend services", "url": "https://github.com/maxmya/droneia" }
+            ]
+          }
+        ]
+      },
+      "versions": [],
+      "updates": []
+    },
+    {
+      "slug": "droneiak",
+      "name": "DroneiaK",
+      "tagline": "A reactive client for Droneia.",
+      "description": "Kotlin take on the Droneia client. Reactive streams, explicit state, and the same service contracts as the other front ends.",
+      "status": "experiment",
+      "language": "Kotlin",
+      "repoUrl": "https://github.com/maxmya/droneiak",
+      "wikiUrl": "https://github.com/maxmya/droneiak/wiki",
+      "tags": ["kotlin", "reactive", "robotics"],
+      "accent": "#8a5a9e",
+      "landing": {
+        "eyebrow": "PROJECT 05 / EXPERIMENT",
+        "headline": "ANOTHER WAY\nTO LISTEN.",
+        "deck": "A second client for the same backend, built to see how far a reactive model carries before it gets in the way.",
+        "ctaLabel": "VIEW SOURCE",
+        "ctaUrl": "https://github.com/maxmya/droneiak",
+        "blocks": [
+          {
+            "type": "links",
+            "title": "GO DEEPER",
+            "body": "",
+            "items": [],
+            "links": [
+              { "label": "read the wiki", "url": "https://github.com/maxmya/droneiak/wiki" },
+              { "label": "backend services", "url": "https://github.com/maxmya/droneia" }
+            ]
+          }
+        ]
+      },
+      "versions": [],
+      "updates": []
+    },
+    {
+      "slug": "dotfiles",
+      "name": "dotfiles",
+      "tagline": "The machine, written down.",
+      "description": "My Linux and terminal setup: Lua, shell, and the small alignments that make a workspace feel like a workspace. Rebuilt more often than it should be.",
+      "status": "ongoing",
+      "language": "Lua",
+      "repoUrl": "https://github.com/maxmya/dotfiles",
+      "wikiUrl": "https://github.com/maxmya/dotfiles/wiki",
+      "tags": ["lua", "linux", "dotfiles"],
+      "accent": "#b08d57",
+      "landing": {
+        "eyebrow": "PROJECT 06 / WORKBENCH",
+        "headline": "THE MACHINE,\nWRITTEN DOWN.",
+        "deck": "A living record of keys, colors and small conveniences. Clone it, steal the parts that make sense, leave the rest.",
+        "ctaLabel": "VIEW SOURCE",
+        "ctaUrl": "https://github.com/maxmya/dotfiles",
+        "blocks": [
+          {
+            "type": "links",
+            "title": "GO DEEPER",
+            "body": "",
+            "items": [],
+            "links": [
+              { "label": "read the wiki", "url": "https://github.com/maxmya/dotfiles/wiki" },
+              { "label": "commit history", "url": "https://github.com/maxmya/dotfiles/commits/dev" }
+            ]
+          }
+        ]
+      },
+      "versions": [],
+      "updates": []
+    },
+    {
+      "slug": "zamboka-godot-version",
+      "name": "Zamboka Version",
+      "tagline": "A version check with a pulse.",
+      "description": "Godot-side version handling for the Zamboka experiments: compare, report and fail loudly when a build and its content disagree.",
+      "status": "experiment",
+      "language": "GDScript",
+      "repoUrl": "https://github.com/maxmya/zamboka-godot-version",
+      "wikiUrl": "https://github.com/maxmya/zamboka-godot-version/wiki",
+      "tags": ["godot", "gdscript", "games"],
+      "accent": "#3f7d6e",
+      "landing": {
+        "eyebrow": "PROJECT 07 / GAMES",
+        "headline": "BUILD VS\nCONTENT.",
+        "deck": "A tiny guard rail for Godot projects, so a build never quietly runs against the wrong version of its own data.",
+        "ctaLabel": "VIEW SOURCE",
+        "ctaUrl": "https://github.com/maxmya/zamboka-godot-version",
+        "blocks": [
+          {
+            "type": "links",
+            "title": "GO DEEPER",
+            "body": "",
+            "items": [],
+            "links": [
+              { "label": "read the wiki", "url": "https://github.com/maxmya/zamboka-godot-version/wiki" }
+            ]
+          }
+        ]
+      },
+      "versions": [],
+      "updates": []
+    }
+  ],
+  "updates": [
+    {
+      "date": "2026-09-07",
+      "title": "The bench is open",
+      "body": "New home for the build log. Project pages, version history and wiki links now live in one place instead of scattered across README files.",
+      "kind": "site",
+      "projectSlug": null
+    },
+    {
+      "date": "2026-09-07",
+      "title": "AppShelf 0.7.0",
+      "body": "Self-update shipped. The same update machinery used for managed apps now runs on the AppImage that's currently executing.",
+      "kind": "release",
+      "projectSlug": "appshelf"
+    },
+    {
+      "date": "2026-08-17",
+      "title": "Notes on agent constitutions",
+      "body": "A written constitution for AI agents went up as a separate repository. It's a document, not a framework, and that's deliberate.",
+      "kind": "note",
+      "projectSlug": null
+    },
+    {
+      "date": "2026-08-11",
+      "title": "tokmon output, simplified",
+      "body": "Removed decoration from the CLI output. Pipeable text is the whole interface now.",
+      "kind": "change",
+      "projectSlug": "tokmon"
+    }
+  ]
+}

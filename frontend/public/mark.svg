@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="maxmya bench mark">
+  <rect width="48" height="48" fill="#161614"/>
+  <path d="M8 14h32M13 14v22M35 14v22M18 26h12" fill="none" stroke="#f1efe7" stroke-width="3"/>
+  <circle cx="35" cy="26" r="3.4" fill="#d23b25"/>
+</svg>
